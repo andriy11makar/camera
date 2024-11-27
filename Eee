@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Access</title>
+</head>
+<body>
+    <h1>Доступ до камери</h1>
+    <video id="video" autoplay playsinline style="width: 100%; max-width: 600px; border: 1px solid black;"></video>
+    <script>
+        // Функція для доступу до камери
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                const videoElement = document.getElementById('video');
+                videoElement.srcObject = stream;
+            } catch (error) {
+                alert('Помилка доступу до камери: ' + error.message);
+            }
+        }
+
+        // Запуск камери при завантаженні сторінки
+        startCamera();
+    </script>
+</body>
+</html>
